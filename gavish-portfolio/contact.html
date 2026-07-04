@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Gavish Nagar</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.4rem;
+    margin-top: 2.5rem;
+  }
+  .contact-card {
+    display: block;
+    border: 1px solid rgba(143,168,156,0.2);
+    border-radius: 16px;
+    padding: 1.8rem 1.6rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  }
+  .contact-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(232,165,96,0.5);
+    background: rgba(232,165,96,0.05);
+  }
+  .contact-card .glyph { font-size: 1.6rem; display: block; margin-bottom: 0.9rem; }
+  .contact-card h3 { font-size: 1.05rem; color: var(--parchment); margin-bottom: 0.3rem; }
+  .contact-card span.value { font-family: var(--font-mono); font-size: 0.82rem; color: var(--ember-amber); }
+</style>
+</head>
+<body>
+<div class="ambient-glow"></div>
+<nav class="site-nav">
+  <div class="brand">Gavish<span class="dot">.</span>Nagar</div>
+  <a class="home-link" href="index.html">← Back to the desk</a>
+</nav>
+<main class="page-shell">
+  <div class="page-header">
+    <span class="eyebrow">Chapter 09 — Contact</span>
+    <h1>Let's talk.</h1>
+    <p class="lede">A message, a project, an idea — I'd genuinely like to hear it.</p>
+  </div>
+
+  <div class="contact-grid">
+    <a class="contact-card" href="mailto:gavishnagar38@gmail.com">
+      <span class="glyph">✉️</span>
+      <h3>Email</h3>
+      <span class="value">gavishnagar38@gmail.com</span>
+    </a>
+    <a class="contact-card" href="tel:+918221853001">
+      <span class="glyph">📞</span>
+      <h3>Phone</h3>
+      <span class="value">+91 82218 53001</span>
+    </a>
+    <a class="contact-card" href="https://linkedin.com/in/gavishnagar" target="_blank" rel="noopener">
+      <span class="glyph">🔗</span>
+      <h3>LinkedIn</h3>
+      <span class="value">/in/gavishnagar</span>
+    </a>
+    <a class="contact-card" href="https://github.com/gavishnagar" target="_blank" rel="noopener">
+      <span class="glyph">🗂️</span>
+      <h3>GitHub</h3>
+      <span class="value">/gavishnagar</span>
+    </a>
+  </div>
+
+  <div class="chapter-stub" style="margin-top: 3rem;">
+    <span class="glyph">📸</span>
+    <h3>Add your Instagram or art socials?</h3>
+    <p>If you'd like to link an Instagram (for your paintings) or any other social, send the handle and I'll add it here.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  Designed and built by Gavish Nagar · <a href="mailto:gavishnagar38@gmail.com">gavishnagar38@gmail.com</a>
+</footer>
+</body>
+</html>

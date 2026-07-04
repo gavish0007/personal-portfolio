@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gavish Nagar — The Studio</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="studio.css">
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+</head>
+<body class="studio-body">
+
+<div id="loader" class="loader">
+  <div class="loader-inner">
+    <span class="loader-glyph">🎨</span>
+    <div class="loader-label">Setting up the studio…</div>
+    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+  </div>
+</div>
+
+<canvas id="scene"></canvas>
+
+<header class="studio-topbar">
+  <div class="brand">Gavish<span class="dot">.</span>Nagar</div>
+  <div class="studio-hint" id="studioHint">Click a chapter to fly there — or click an object in the room</div>
+  <a class="studio-fallback-link" href="hub-2d-backup.html">Simple view</a>
+</header>
+
+<noscript>
+  <div style="position:fixed; inset:0; background:#12333A; color:#F3E9D8; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem; font-family:sans-serif; z-index:200;">
+    This page needs JavaScript for the 3D studio. <a href="hub-2d-backup.html" style="color:#E8A560; margin-left:6px;">View the simple version instead →</a>
+  </div>
+</noscript>
+
+<nav class="studio-menu" id="studioMenu">
+  <button class="menu-item is-active" data-section="overview">
+    <span class="menu-glyph">🏠</span><span>Overview</span>
+  </button>
+  <button class="menu-item" data-section="about">
+    <span class="menu-glyph">📖</span><span>About</span>
+  </button>
+  <button class="menu-item" data-section="academics">
+    <span class="menu-glyph">🎓</span><span>Academics</span>
+  </button>
+  <button class="menu-item" data-section="resume">
+    <span class="menu-glyph">🗂️</span><span>Resume</span>
+  </button>
+  <button class="menu-item" data-section="skills">
+    <span class="menu-glyph">🧰</span><span>Skills</span>
+  </button>
+  <button class="menu-item" data-section="paintings">
+    <span class="menu-glyph">🖼️</span><span>Paintings</span>
+  </button>
+  <button class="menu-item" data-section="music">
+    <span class="menu-glyph">🎹</span><span>Music</span>
+  </button>
+  <button class="menu-item" data-section="projects">
+    <span class="menu-glyph">💻</span><span>Projects</span>
+  </button>
+  <button class="menu-item" data-section="achievements">
+    <span class="menu-glyph">🏆</span><span>Achievements</span>
+  </button>
+  <button class="menu-item" data-section="contact">
+    <span class="menu-glyph">✉️</span><span>Contact</span>
+  </button>
+</nav>
+
+<div class="studio-panel" id="studioPanel">
+  <button class="panel-close" id="panelClose" aria-label="Close">✕ Back to the room</button>
+  <div class="panel-body" id="panelBody"></div>
+</div>
+
+<script type="module" src="studio.js"></script>
+</body>
+</html>

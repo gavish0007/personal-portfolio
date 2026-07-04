@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Side Quests — Paintings — Gavish Nagar</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.4rem;
+    margin-bottom: 3.5rem;
+  }
+  .canvas-card { position: relative; }
+  .canvas-frame {
+    border: 8px solid var(--parchment);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: transform 0.35s ease;
+  }
+  .canvas-card:nth-child(odd) .canvas-frame { transform: rotate(-1.2deg); }
+  .canvas-card:nth-child(even) .canvas-frame { transform: rotate(1.2deg); }
+  .canvas-card:hover .canvas-frame { transform: rotate(0deg) scale(1.02); }
+  .canvas-frame img { display: block; width: 100%; }
+  .canvas-meta { margin-top: 0.9rem; }
+  .canvas-meta h3 { font-size: 1.05rem; color: var(--parchment); margin-bottom: 0.2rem; }
+  .canvas-meta .medium {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ember-amber);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .canvas-meta p { font-size: 0.9rem; margin: 0; }
+</style>
+</head>
+<body>
+<div class="ambient-glow"></div>
+<nav class="site-nav">
+  <div class="brand">Gavish<span class="dot">.</span>Nagar</div>
+  <a class="home-link" href="index.html">← Back to the desk</a>
+</nav>
+<main class="page-shell">
+  <div class="page-header">
+    <span class="eyebrow">Chapter 05 — Side Quests</span>
+    <h1>Paintings.</h1>
+    <p class="lede">The quieter half of my brain — where logic gives way to color.</p>
+  </div>
+
+  <div class="gallery">
+    <div class="canvas-card">
+      <div class="canvas-frame">
+        <img src="assets/painting1.jpg" alt="An original oil painting by Gavish of a campfire by a lake at golden hour, mountains in the background">
+      </div>
+      <div class="canvas-meta">
+        <h3>Campfire at Golden Hour</h3>
+        <span class="medium">Oil on canvas</span>
+        <p>A quiet lakeside evening — pine silhouettes, a dusk sky, and firelight reflected on still water.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter-stub">
+    <span class="glyph">🎨</span>
+    <h3>More on the way</h3>
+    <p>Send over photos of your other paintings — with titles, medium, and a line about each — and I'll add them to the gallery.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  Designed and built by Gavish Nagar · <a href="mailto:gavishnagar38@gmail.com">gavishnagar38@gmail.com</a>
+</footer>
+</body>
+</html>

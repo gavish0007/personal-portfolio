@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Gavish Nagar</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-copy p { font-size: 1.05rem; margin-bottom: 1.3rem; }
+
+  .about-copy .drop {
+    font-family: var(--font-display);
+    font-size: 3.4rem;
+    line-height: 0.7;
+    color: var(--ember-amber-soft);
+    float: left;
+    margin-right: 10px;
+    margin-top: 6px;
+  }
+
+  .side-frame {
+    border: 8px solid var(--parchment);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    transform: rotate(-1.4deg);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .side-frame img { display: block; width: 100%; }
+
+  .side-caption {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ash-sage);
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .facts {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .fact {
+    border: 1px solid rgba(143,168,156,0.2);
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+  }
+
+  .fact .eyebrow { display: block; margin-bottom: 0.4rem; }
+  .fact strong { font-family: var(--font-display); font-size: 1.05rem; color: var(--parchment); }
+
+  @media (max-width: 760px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .facts { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ambient-glow"></div>
+
+<nav class="site-nav">
+  <div class="brand">Gavish<span class="dot">.</span>Nagar</div>
+  <a class="home-link" href="index.html">← Back to the desk</a>
+</nav>
+
+<main class="page-shell">
+  <div class="page-header">
+    <span class="eyebrow">Chapter 01 — About</span>
+    <h1>The story so far.</h1>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-copy">
+      <p><span class="drop">S</span>ometimes it's Java or C++. Sometimes it's brushstrokes on a canvas. Sometimes it's the quiet language of music.</p>
+      <p>I'm Gavish — a Computer Science student driven by curiosity and creativity. I enjoy building meaningful digital experiences, exploring new technologies, painting ideas into color, and finding inspiration in melodies that stay with me long after they end.</p>
+      <p>To me, every project is a chance to blend logic with imagination and create something that feels alive.</p>
+
+      <div class="facts">
+        <div class="fact">
+          <span class="eyebrow">Based in</span>
+          <strong>Noida, India</strong>
+        </div>
+        <div class="fact">
+          <span class="eyebrow">Currently</span>
+          <strong>B.Tech CSE @ JIIT</strong>
+        </div>
+        <div class="fact">
+          <span class="eyebrow">Building</span>
+          <strong>Web dashboards & Android apps</strong>
+        </div>
+        <div class="fact">
+          <span class="eyebrow">Off-screen</span>
+          <strong>Painting & piano</strong>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="side-frame">
+        <img src="assets/painting1.jpg" alt="An original oil painting by Gavish of a campfire by a lake at golden hour, mountains in the background">
+      </div>
+      <div class="side-caption">Campfire at golden hour — oil on canvas</div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  Designed and built by Gavish Nagar · <a href="mailto:gavishnagar38@gmail.com">gavishnagar38@gmail.com</a>
+</footer>
+
+</body>
+</html>

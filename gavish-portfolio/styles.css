@@ -1,0 +1,231 @@
+/* ============================================
+   GOLDEN HOUR ATELIER — shared design system
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --canvas-teal: #12333A;
+  --canvas-teal-deep: #0C2429;
+  --dusk-navy: #1B3B4B;
+  --ember-amber: #E8A560;
+  --ember-amber-soft: #F0C08A;
+  --firelight-rose: #DB6E86;
+  --parchment: #F3E9D8;
+  --parchment-dim: #D9CCB4;
+  --ash-sage: #8FA89C;
+  --ink: #0A1F24;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse 120% 80% at 50% -10%, var(--dusk-navy) 0%, var(--canvas-teal) 45%, var(--canvas-teal-deep) 100%);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* faint painterly grain/texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* warm ambient glow, fixed, low opacity */
+.ambient-glow {
+  position: fixed;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, rgba(232,165,96,0.16) 0%, rgba(219,110,134,0.08) 40%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p { line-height: 1.7; color: var(--parchment-dim); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ember-amber);
+}
+
+/* ---------- top nav ---------- */
+.site-nav {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 6vw;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.site-nav .brand {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--parchment);
+}
+
+.site-nav .brand .dot { color: var(--ember-amber); }
+
+.site-nav a.home-link {
+  color: var(--ash-sage);
+  border: 1px solid rgba(143,168,156,0.35);
+  padding: 8px 16px;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+}
+
+.site-nav a.home-link:hover {
+  color: var(--canvas-teal-deep);
+  background: var(--ember-amber);
+  border-color: var(--ember-amber);
+}
+
+/* ---------- generic page shell ---------- */
+.page-shell {
+  position: relative;
+  z-index: 2;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 6vh 6vw 14vh;
+}
+
+.page-header {
+  margin-bottom: 4rem;
+}
+
+.page-header h1 {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  margin-top: 0.6rem;
+  color: var(--parchment);
+}
+
+.page-header .lede {
+  font-size: 1.1rem;
+  max-width: 60ch;
+  margin-top: 1rem;
+}
+
+/* ---------- coming soon chapter stub ---------- */
+.chapter-stub {
+  border: 1px dashed rgba(232,165,96,0.35);
+  border-radius: 18px;
+  padding: 3rem 2rem;
+  text-align: center;
+  background: rgba(243,233,216,0.03);
+}
+
+.chapter-stub .glyph {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.chapter-stub h3 {
+  color: var(--ember-amber-soft);
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.chapter-stub p { max-width: 42ch; margin: 0 auto; }
+
+/* ---------- footer ---------- */
+.site-footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 4rem 6vw 3rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ash-sage);
+}
+
+.site-footer a {
+  border-bottom: 1px solid rgba(143,168,156,0.4);
+  padding-bottom: 1px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: var(--ember-amber);
+  border-color: var(--ember-amber);
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 12px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--ember-amber), var(--firelight-rose));
+  color: var(--ink);
+  border: none;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(232,165,96,0.28);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(143,168,156,0.4);
+  color: var(--parchment-dim);
+}
+
+.btn-ghost:hover {
+  border-color: var(--ember-amber);
+  color: var(--ember-amber);
+}

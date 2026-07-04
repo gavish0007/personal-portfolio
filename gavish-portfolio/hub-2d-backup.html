@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gavish Nagar — Portfolio</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body { overflow-x: hidden; }
+
+  .hub-nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 6vw 0;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+  .hub-nav .brand { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+  .hub-nav .brand .dot { color: var(--ember-amber); }
+  .hub-nav .socials { display: flex; gap: 18px; }
+  .hub-nav .socials a { color: var(--ash-sage); transition: color 0.2s ease; }
+  .hub-nav .socials a:hover { color: var(--ember-amber); }
+
+  /* -------- hero / sketchbook stage -------- */
+  .stage {
+    position: relative;
+    z-index: 2;
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4vh 4vw 2vh;
+  }
+
+  .stage-intro {
+    text-align: center;
+    margin-bottom: 3.2rem;
+  }
+
+  .stage-intro .eyebrow { display: block; margin-bottom: 0.8rem; }
+
+  .stage-intro h1 {
+    font-size: clamp(2.2rem, 5.2vw, 3.4rem);
+    color: var(--parchment);
+    max-width: 16ch;
+    margin: 0 auto;
+    line-height: 1.15;
+  }
+
+  .stage-intro h1 em {
+    font-style: italic;
+    color: var(--ember-amber-soft);
+  }
+
+  /* 3D sketchbook */
+  .book-wrap {
+    perspective: 1800px;
+    width: min(920px, 92vw);
+  }
+
+  .book {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out;
+    transform: rotateX(4deg) rotateY(0deg);
+  }
+
+  .page {
+    background: linear-gradient(160deg, #FBF4E6, #F0E4CC);
+    color: var(--ink);
+    padding: 2.6rem 2.4rem;
+    min-height: 380px;
+    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.55);
+    position: relative;
+  }
+
+  .page-left {
+    border-radius: 6px 0 0 6px;
+    transform-origin: right center;
+    transform: rotateY(2deg);
+  }
+
+  .page-right {
+    border-radius: 0 6px 6px 0;
+    transform-origin: left center;
+    transform: rotateY(-2deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .book::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 24px;
+    margin-left: -12px;
+    background: linear-gradient(90deg, rgba(0,0,0,0.18), rgba(0,0,0,0) 40%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.18));
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .page-left .eyebrow { color: var(--firelight-rose); }
+
+  .page-left h2 {
+    font-size: 1.7rem;
+    margin: 0.7rem 0 1.1rem;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+
+  .page-left p {
+    color: #4A4038;
+    font-size: 0.98rem;
+  }
+
+  .signature {
+    margin-top: 1.6rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--firelight-rose);
+  }
+
+  .page-right .frame {
+    border: 8px solid #fff;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    transform: rotate(1.2deg);
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  .page-right .frame img {
+    display: block;
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+  }
+
+  .page-right .caption {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: #7A6E5D;
+    margin-top: 0.9rem;
+    letter-spacing: 0.03em;
+  }
+
+  .page-right .tape {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 90px;
+    height: 26px;
+    background: rgba(232,165,96,0.55);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .book-spine-shadow {
+    height: 26px;
+    width: min(920px, 92vw);
+    margin: 0 auto;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.45), transparent 70%);
+    filter: blur(4px);
+  }
+
+  .scroll-cue {
+    margin-top: 2.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ash-sage);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: bob 2.4s ease-in-out infinite;
+  }
+
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* -------- floating drift elements -------- */
+  .drift {
+    position: fixed;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.5;
+    font-size: 1.6rem;
+    filter: saturate(0.8);
+  }
+
+  /* -------- studio desk / nav objects -------- */
+  .desk {
+    position: relative;
+    z-index: 2;
+    padding: 2vh 6vw 12vh;
+  }
+
+  .desk-heading {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .desk-heading h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--parchment);
+    margin-top: 0.6rem;
+  }
+
+  .desk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 22px;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  .desk-item {
+    position: relative;
+    display: block;
+    padding: 1.8rem 1.6rem;
+    border-radius: 16px;
+    background: linear-gradient(160deg, rgba(243,233,216,0.06), rgba(243,233,216,0.02));
+    border: 1px solid rgba(143,168,156,0.18);
+    transform-style: preserve-3d;
+    transition: transform 0.35s cubic-bezier(0.2,0.8,0.2,1), border-color 0.3s ease, background 0.3s ease;
+  }
+
+  .desk-item:hover {
+    transform: translateY(-6px) rotateX(4deg) rotateY(-3deg);
+    border-color: rgba(232,165,96,0.5);
+    background: linear-gradient(160deg, rgba(232,165,96,0.1), rgba(219,110,134,0.04));
+  }
+
+  .desk-item .glyph {
+    font-size: 1.9rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .desk-item h3 {
+    font-size: 1.15rem;
+    color: var(--parchment);
+    margin-bottom: 0.4rem;
+  }
+
+  .desk-item p {
+    font-size: 0.88rem;
+    color: var(--ash-sage);
+    margin: 0;
+  }
+
+  .desk-item .tag {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--ember-amber);
+    opacity: 0.7;
+  }
+
+  @media (max-width: 720px) {
+    .book { grid-template-columns: 1fr; }
+    .page-left, .page-right { border-radius: 6px; }
+    .book::after { display: none; }
+    .page-right .frame img { height: 200px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ambient-glow"></div>
+
+<span class="drift" id="drift1" style="top:18%; left:8%;">🖌️</span>
+<span class="drift" id="drift2" style="top:65%; left:88%;">🎹</span>
+<span class="drift" id="drift3" style="top:80%; left:12%;">✦</span>
+
+<nav class="hub-nav">
+  <div class="brand">Gavish<span class="dot">.</span>Nagar</div>
+  <div class="socials">
+    <a href="https://github.com/gavishnagar" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/gavishnagar" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:gavishnagar38@gmail.com">Email</a>
+  </div>
+</nav>
+
+<section class="stage">
+  <div class="stage-intro">
+    <span class="eyebrow">A digital atelier</span>
+    <h1>I create in <em>more than one</em> language.</h1>
+  </div>
+
+  <div class="book-wrap">
+    <div class="book" id="book">
+      <div class="page page-left">
+        <span class="eyebrow">Chapter 00 — Intro</span>
+        <h2>Sometimes it's Java or C++.<br>Sometimes it's brushstrokes.</h2>
+        <p>I'm Gavish — a Computer Science student driven by curiosity and creativity. I build meaningful digital experiences, paint ideas into color, and find inspiration in melodies that stay with me long after they end.</p>
+        <p>Every project is a chance to blend logic with imagination and create something that feels alive.</p>
+        <div class="signature">— Gavish</div>
+      </div>
+      <div class="page page-right">
+        <div class="tape"></div>
+        <div>
+          <div class="frame">
+            <img src="assets/painting1.jpg" alt="An original oil painting by Gavish of a campfire by a lake at golden hour, mountains in the background">
+          </div>
+          <div class="caption">FIG. 01 — original oil on canvas, campfire at golden hour</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="book-spine-shadow"></div>
+
+  <div class="scroll-cue">↓ Explore the desk</div>
+</section>
+
+<section class="desk">
+  <div class="desk-heading">
+    <span class="eyebrow" style="display:block; margin-bottom:0.6rem;">On the desk</span>
+    <h2>Everything lives somewhere here.</h2>
+  </div>
+
+  <div class="desk-grid">
+    <a class="desk-item" href="about.html">
+      <span class="tag">01</span>
+      <span class="glyph">📖</span>
+      <h3>About</h3>
+      <p>The story so far — who I am, on and off screen.</p>
+    </a>
+    <a class="desk-item" href="resume.html">
+      <span class="tag">02</span>
+      <span class="glyph">🗂️</span>
+      <h3>Resume</h3>
+      <p>Education, experience, and the formal version of me.</p>
+    </a>
+    <a class="desk-item" href="skills.html">
+      <span class="tag">03</span>
+      <span class="glyph">⚙️</span>
+      <h3>Skills</h3>
+      <p>Languages and tools I reach for when building.</p>
+    </a>
+    <a class="desk-item" href="projects.html">
+      <span class="tag">04</span>
+      <span class="glyph">💻</span>
+      <h3>Projects</h3>
+      <p>Things I've built, broken, and rebuilt better.</p>
+    </a>
+    <a class="desk-item" href="paintings.html">
+      <span class="tag">05</span>
+      <span class="glyph">🎨</span>
+      <h3>Side Quests — Paintings</h3>
+      <p>Canvas, color, and the quieter half of my brain.</p>
+    </a>
+    <a class="desk-item" href="music.html">
+      <span class="tag">06</span>
+      <span class="glyph">🎹</span>
+      <h3>Music — Piano</h3>
+      <p>Melodies I return to, and a few of my own.</p>
+    </a>
+    <a class="desk-item" href="achievements.html">
+      <span class="tag">07</span>
+      <span class="glyph">🏆</span>
+      <h3>Achievements</h3>
+      <p>Milestones worth marking along the way.</p>
+    </a>
+    <a class="desk-item" href="academics.html">
+      <span class="tag">08</span>
+      <span class="glyph">🎓</span>
+      <h3>Academics</h3>
+      <p>Where the technical foundation was laid.</p>
+    </a>
+    <a class="desk-item" href="contact.html">
+      <span class="tag">09</span>
+      <span class="glyph">✉️</span>
+      <h3>Contact</h3>
+      <p>Let's talk — a message, a project, an idea.</p>
+    </a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  Designed and built by Gavish Nagar · <a href="mailto:gavishnagar38@gmail.com">gavishnagar38@gmail.com</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
